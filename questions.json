@@ -1,0 +1,46 @@
+{
+  "que-vs-dont": {
+    "questions": [
+      {
+        "question": "Le livre ___ j'ai besoin est sur la table.",
+        "options": ["que", "dont"],
+        "answer": "dont",
+        "explanation": "'Dont' is used because it replaces an object of the preposition 'de' in 'avoir besoin de'."
+      },
+      {
+        "question": "La fille ___ je parle est ma sœur.",
+        "options": ["que", "dont"],
+        "answer": "dont",
+        "explanation": "'Dont' is used because it replaces an object of the preposition 'de' in 'parler de'."
+      },
+      {
+        "question": "Le film ___ nous avons vu était génial.",
+        "options": ["que", "dont"],
+        "answer": "que",
+        "explanation": "'Que' is used because it is the direct object of the verb 'avons vu'."
+      }
+    ]
+  },
+  "qui-vs-que": {
+    "questions": [
+      {
+        "question": "L'homme ___ est venu hier est mon ami.",
+        "options": ["qui", "que"],
+        "answer": "qui",
+        "explanation": "'Qui' is used because it is the subject of the verb 'est venu'."
+      },
+      {
+        "question": "Le livre ___ tu as lu est intéressant.",
+        "options": ["qui", "que"],
+        "answer": "que",
+        "explanation": "'Que' is used because it is the direct object of the verb 'as lu'."
+      },
+      {
+        "question": "La femme ___ travaille ici est gentille.",
+        "options": ["qui", "que"],
+        "answer": "qui",
+        "explanation": "'Qui' is used because it is the subject of the verb 'travaille'."
+      }
+    ]
+  }
+}

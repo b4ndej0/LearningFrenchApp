@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Grammar Practice</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="main-menu">
+    <h1>French Grammar Practice</h1>
+    <button onclick="showTopic('que-vs-dont')">Que vs Dont</button>
+    <button onclick="showTopic('qui-vs-que')">Qui vs Que</button>
+  </div>
+
+  <div id="que-vs-dont-explanation" class="topic-explanation" style="display: none;">
+    <h2>Que vs Dont</h2>
+    <p>"Que" is used as a direct object, while "dont" is used for objects of prepositions, especially "de".</p>
+    <p><strong>Example:</strong> Le livre <em>que</em> j'ai lu. (The book that I read.)</p>
+    <p><strong>Example:</strong> Le livre <em>dont</em> j'ai besoin. (The book that I need.)</p>
+    <button onclick="startPractice('que-vs-dont')">Start Practice</button>
+  </div>
+
+  <div id="qui-vs-que-explanation" class="topic-explanation" style="display: none;">
+    <h2>Qui vs Que</h2>
+    <p>"Qui" is used for subjects, while "que" is used for objects.</p>
+    <p><strong>Example:</strong> L'homme <em>qui</em> parle. (The man who is speaking.)</p>
+    <p><strong>Example:</strong> Le livre <em>que</em> j'ai lu. (The book that I read.)</p>
+    <button onclick="startPractice('qui-vs-que')">Start Practice</button>
+  </div>
+
+  <div id="practice" style="display: none;">
+    <h2>Practice</h2>
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="feedback"></p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
