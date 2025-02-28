@@ -1,0 +1,14 @@
+{
+  "title": "Dictation Exercise",
+  "description": "Type what you hear.",
+  "questions": [
+    {
+      "sentence": "Le garçon mange une pomme.",
+      "answer": "Le garçon mange une pomme."
+    },
+    {
+      "sentence": "Elle aime le chocolat.",
+      "answer": "Elle aime le chocolat."
+    }
+  ]
+}
