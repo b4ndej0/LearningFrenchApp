@@ -1,7 +1,8 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  line-height: 1.6;
+  text-align: center;
+  background-color: #f8f9fa;
 }
 
 h1, h2 {
@@ -29,11 +30,18 @@ button:hover {
 
 #options button {
   display: block;
-  margin: 5px 0;
-  width: 100px;
+  margin: 5px auto;
+  width: 200px;
 }
 
 #feedback {
   margin-top: 10px;
   font-style: italic;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+  width: 80%;
+  margin: 10px 0;
 }
