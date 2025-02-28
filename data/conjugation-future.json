@@ -1,0 +1,96 @@
+{
+  "title": "Future Tense Conjugation",
+  "description": "Practice conjugating verbs in the future tenses.",
+  "questions": [
+    {
+      "infinitive": "manger",
+      "sentence": "Demain, je ___ une pizza.",
+      "answer": "mangerai",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "aller",
+      "sentence": "Ce soir, nous ___ au cinéma.",
+      "answer": "allons aller",
+      "tense": "Futur Proche"
+    },
+    {
+      "infinitive": "être",
+      "sentence": "Après le voyage, tu ___ fatigué.",
+      "answer": "seras",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "faire",
+      "sentence": "L'année prochaine, ils ___ un voyage en Italie.",
+      "answer": "feront",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "venir",
+      "sentence": "Tu ___ me voir la semaine prochaine?",
+      "answer": "viendras",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "prendre",
+      "sentence": "Nous ___ un taxi pour aller à l'aéroport.",
+      "answer": "allons prendre",
+      "tense": "Futur Proche"
+    },
+    {
+      "infinitive": "voir",
+      "sentence": "Je ___ ce film demain soir.",
+      "answer": "verrai",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "partir",
+      "sentence": "Ils ___ dès que possible.",
+      "answer": "seront partis",
+      "tense": "Futur Antérieur"
+    },
+    {
+      "infinitive": "avoir",
+      "sentence": "Quand tu reviendras, j'___ terminé mon projet.",
+      "answer": "aurai",
+      "tense": "Futur Antérieur"
+    },
+    {
+      "infinitive": "vouloir",
+      "sentence": "Est-ce que vous ___ un café?",
+      "answer": "voudrez",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "pouvoir",
+      "sentence": "Quand tu seras en vacances, tu ___ te reposer.",
+      "answer": "pourras",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "devoir",
+      "sentence": "Je ___ étudier avant l'examen.",
+      "answer": "devrai",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "savoir",
+      "sentence": "Bientôt, nous ___ la vérité.",
+      "answer": "saurons",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "envoyer",
+      "sentence": "Elle ___ un message plus tard.",
+      "answer": "enverra",
+      "tense": "Futur Simple"
+    },
+    {
+      "infinitive": "recevoir",
+      "sentence": "Ils ___ le colis demain.",
+      "answer": "recevront",
+      "tense": "Futur Simple"
+    }
+  ]
+}
