@@ -1,6 +1,6 @@
 {
   "title": "Dictation Exercise",
-  "description": "Type what you hear.",
+  "description": "Listen and type what you hear.",
   "questions": [
     {
       "sentence": "Le garçon mange une pomme.",
@@ -9,6 +9,38 @@
     {
       "sentence": "Elle aime le chocolat.",
       "answer": "Elle aime le chocolat."
+    },
+    {
+      "sentence": "Nous habitons en France.",
+      "answer": "Nous habitons en France."
+    },
+    {
+      "sentence": "Il travaille dans une banque.",
+      "answer": "Il travaille dans une banque."
+    },
+    {
+      "sentence": "Les enfants jouent dans le parc.",
+      "answer": "Les enfants jouent dans le parc."
+    },
+    {
+      "sentence": "Je vais à l'école en bus.",
+      "answer": "Je vais à l'école en bus."
+    },
+    {
+      "sentence": "Tu parles très bien français.",
+      "answer": "Tu parles très bien français."
+    },
+    {
+      "sentence": "Ils regardent un film intéressant.",
+      "answer": "Ils regardent un film intéressant."
+    },
+    {
+      "sentence": "Nous aimons faire du sport.",
+      "answer": "Nous aimons faire du sport."
+    },
+    {
+      "sentence": "Elle lit un livre passionnant.",
+      "answer": "Elle lit un livre passionnant."
     }
   ]
 }
