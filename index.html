@@ -1,24 +1,37 @@
-<div id="main-menu">
-  <h1>French Grammar Practice</h1>
-  <button onclick="startPractice('que-vs-dont')">Que vs Dont</button>
-  <button onclick="startPractice('que-vs-qui')">Qui vs Que</button>
-  <button onclick="startPractice('que-qui-dont-ou')">Que, Qui, Dont, Où</button>
-  <button onclick="startDictationPractice()">Dictation Practice</button>
-  <button onclick="startVocabulary()">Vocabulary (Vegetables)</button>
-  <button onclick="startConjugationPractice()">Future Conjugation</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Grammar Practice</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="main-menu">
+    <h1>French Grammar Practice</h1>
+    <div id="button-container">
+      <button onclick="startPractice('que-vs-dont')">Que vs Dont</button>
+      <button onclick="startPractice('que-vs-qui')">Qui vs Que</button>
+      <button onclick="startPractice('que-qui-dont-ou')">Que, Qui, Dont, Où</button>
+      <button onclick="startDictationPractice()">Dictation Practice</button>
+      <button onclick="startVocabulary()">Vocabulary (Vegetables)</button>
+      <button onclick="startConjugationPractice()">Future Conjugation</button>
+    </div>
+  </div>
 
-<div id="vocabulary" style="display: none;">
-  <h2>Learn Vocabulary</h2>
-  <div id="word-list"></div>
-  <button onclick="startVocabularyQuiz()">Practice</button>
-</div>
+  <div id="vocabulary" style="display: none;">
+    <h2>Learn Vocabulary</h2>
+    <div id="word-list"></div>
+    <button onclick="startVocabularyQuiz()">Practice</button>
+  </div>
 
-<div id="practice" style="display: none;">
-  <h2>Practice</h2>
-  <p id="question"></p>
-  <div id="options"></div>
-  <p id="feedback"></p>
-</div>
+  <div id="practice" style="display: none;">
+    <h2>Practice</h2>
+    <p id="question"></p>
+    <div id="options"></div>
+    <p id="feedback"></p>
+  </div>
 
-<script src="app.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
