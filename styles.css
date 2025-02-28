@@ -9,8 +9,14 @@ h1, h2 {
   color: #333;
 }
 
+#button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Adds spacing between buttons */
+}
+
 button {
-  margin: 5px;
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
@@ -18,6 +24,8 @@ button {
   color: white;
   border: none;
   border-radius: 5px;
+  width: 200px; /* Makes buttons the same width */
+  text-align: center;
 }
 
 button:hover {
