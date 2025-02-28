@@ -2,52 +2,92 @@ let currentTopic;
 let questions;
 let currentQuestionIndex = 0;
 let score = 0;
-let currentSentence = ""; // Store sentence for repeat function
+let vocabularyWords = [];
 
-// Function to start grammar practice
-function startPractice(topic) {
-  fetch(`data/${topic}.json`)
+// Function to start Vocabulary (Vegetables)
+function startVocabulary() {
+  fetch("data/vocabulary-vegetables.json")
     .then(response => response.json())
     .then(data => {
-      document.getElementById('practice').style.display = 'block';
-      document.getElementById('main-menu').style.display = 'none';
-      questions = data.questions;
-      currentQuestionIndex = 0;
-      score = 0;
-      displayQuestion();
+      document.getElementById("vocabulary").style.display = "block";
+      document.getElementById("main-menu").style.display = "none";
+      vocabularyWords = data.words;
+      displayVocabularyList();
     })
-    .catch(error => console.error("Error loading questions:", error));
+    .catch(error => console.error("Error loading vocabulary:", error));
 }
 
-// Function to display grammar questions
+// Function to display the vocabulary list with audio buttons
+function displayVocabularyList() {
+  const wordListDiv = document.getElementById("word-list");
+  wordListDiv.innerHTML = "";
+  
+  vocabularyWords.forEach(word => {
+    const wordEntry = document.createElement("div");
+    wordEntry.innerHTML = `
+      <p>${word.french} - ${word.english} <button onclick="playAudio('${word.french}')">🔊 Listen</button></p>
+    `;
+    wordListDiv.appendChild(wordEntry);
+  });
+}
+
+// Function to play the pronunciation of a word
+function playAudio(word) {
+  const speech = new SpeechSynthesisUtterance(word);
+  speech.lang = "fr-FR";
+  window.speechSynthesis.speak(speech);
+}
+
+// Function to start the vocabulary quiz (random 5 words)
+function startVocabularyQuiz() {
+  document.getElementById("vocabulary").style.display = "none";
+  document.getElementById("practice").style.display = "block";
+
+  // Select 5 random words
+  const selectedWords = vocabularyWords.sort(() => 0.5 - Math.random()).slice(0, 5);
+  questions = selectedWords.map(word => ({
+    question: `What is the English meaning of "${word.french}"?`,
+    answer: word.english,
+    options: shuffleArray([
+      word.english,
+      getRandomIncorrectAnswer(word.english),
+      getRandomIncorrectAnswer(word.english)
+    ])
+  }));
+  currentQuestionIndex = 0;
+  score = 0;
+  displayQuestion();
+}
+
+// Function to display a quiz question
 function displayQuestion() {
   const question = questions[currentQuestionIndex];
-  document.getElementById('question').textContent = `Question ${currentQuestionIndex + 1}/${questions.length}: ${question.question}`;
+  document.getElementById("question").textContent = question.question;
   
-  const optionsDiv = document.getElementById('options');
-  optionsDiv.innerHTML = '';
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
   question.options.forEach(option => {
-    const button = document.createElement('button');
+    const button = document.createElement("button");
     button.textContent = option;
     button.onclick = () => checkAnswer(option);
     optionsDiv.appendChild(button);
   });
 
-  document.getElementById('feedback').textContent = '';
+  document.getElementById("feedback").textContent = "";
 }
 
-// Function to check grammar question answer
+// Function to check the quiz answer
 function checkAnswer(selected) {
   const question = questions[currentQuestionIndex];
-  const feedback = document.getElementById('feedback');
+  const feedback = document.getElementById("feedback");
 
   if (selected === question.answer) {
     score++;
-    feedback.textContent = `Correct! ${question.explanation}`;
-    feedback.style.color = 'green';
+    feedback.textContent = "Correct!";
+    feedback.style.color = "green";
   } else {
-    feedback.textContent = `Incorrect. The correct answer is '${question.answer}'. ${question.explanation}`;
-    feedback.style.color = 'red';
+    feedback.textContent = `Incorrect. The correct answer is "${question.answer}".`;
+    feedback.style.color = "red";
   }
 
   currentQuestionIndex++;
@@ -58,77 +98,6 @@ function checkAnswer(selected) {
   }
 }
 
-// Function to start dictation practice
-function startDictationPractice() {
-  fetch("data/dictation.json")
-    .then(response => response.json())
-    .then(data => {
-      questions = data.questions;
-      currentQuestionIndex = 0;
-      score = 0;
-      document.getElementById("practice").style.display = "block";
-      document.getElementById("main-menu").style.display = "none";
-      displayDictationQuestion();
-    })
-    .catch(error => console.error("Error loading dictation questions:", error));
-}
-
-// Function to display dictation question with repeat button
-function displayDictationQuestion() {
-  const question = questions[currentQuestionIndex];
-  document.getElementById("question").textContent = "Listen and type what you hear:";
-  
-  // Store sentence for repeat function
-  currentSentence = question.sentence;
-
-  // Speak the sentence
-  speakSentence(currentSentence);
-
-  // Show input box and repeat button
-  document.getElementById("options").innerHTML = `
-    <button onclick="repeatAudio()">🔁 Repeat</button>
-    <input type="text" id="userAnswer" placeholder="Type here">
-    <button onclick="checkDictationAnswer()">Submit</button>
-  `;
-}
-
-// Function to repeat the sentence
-function repeatAudio() {
-  if (currentSentence) {
-    speakSentence(currentSentence);
-  }
-}
-
-// Function to check dictation answer
-function checkDictationAnswer() {
-  const userAnswer = document.getElementById("userAnswer").value.trim();
-  const question = questions[currentQuestionIndex];
-  const feedback = document.getElementById("feedback");
-
-  if (userAnswer.toLowerCase() === question.answer.toLowerCase()) {
-    score++;
-    feedback.textContent = "Correct!";
-    feedback.style.color = "green";
-  } else {
-    feedback.textContent = `Incorrect. The correct answer was: "${question.answer}".`;
-    feedback.style.color = "red";
-  }
-
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    setTimeout(displayDictationQuestion, 2000);
-  } else {
-    setTimeout(showResults, 2000);
-  }
-}
-
-// Function to handle speech synthesis
-function speakSentence(text) {
-  const speech = new SpeechSynthesisUtterance(text);
-  speech.lang = "fr-FR";
-  window.speechSynthesis.speak(speech);
-}
-
 // Function to show final score
 function showResults() {
   document.getElementById("practice").innerHTML = `
@@ -136,4 +105,19 @@ function showResults() {
     <p>Your score: ${score}/${questions.length}</p>
     <button onclick="location.reload()">Back to Menu</button>
   `;
+}
+
+// Function to shuffle array elements
+function shuffleArray(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+// Function to get a random incorrect answer
+function getRandomIncorrectAnswer(correctAnswer) {
+  const allEnglishWords = vocabularyWords.map(word => word.english);
+  let incorrect;
+  do {
+    incorrect = allEnglishWords[Math.floor(Math.random() * allEnglishWords.length)];
+  } while (incorrect === correctAnswer);
+  return incorrect;
 }
