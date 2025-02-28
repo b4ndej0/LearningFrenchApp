@@ -2,6 +2,7 @@ let currentTopic;
 let questions;
 let currentQuestionIndex = 0;
 let score = 0;
+let currentSentence = ""; // Store sentence for repeat function
 
 // Function to start grammar practice
 function startPractice(topic) {
@@ -72,19 +73,30 @@ function startDictationPractice() {
     .catch(error => console.error("Error loading dictation questions:", error));
 }
 
-// Function to display dictation question
+// Function to display dictation question with repeat button
 function displayDictationQuestion() {
   const question = questions[currentQuestionIndex];
   document.getElementById("question").textContent = "Listen and type what you hear:";
+  
+  // Store sentence for repeat function
+  currentSentence = question.sentence;
 
-  const speech = new SpeechSynthesisUtterance(question.sentence);
-  speech.lang = "fr-FR";
-  window.speechSynthesis.speak(speech);
+  // Speak the sentence
+  speakSentence(currentSentence);
 
+  // Show input box and repeat button
   document.getElementById("options").innerHTML = `
+    <button onclick="repeatAudio()">🔁 Repeat</button>
     <input type="text" id="userAnswer" placeholder="Type here">
     <button onclick="checkDictationAnswer()">Submit</button>
   `;
+}
+
+// Function to repeat the sentence
+function repeatAudio() {
+  if (currentSentence) {
+    speakSentence(currentSentence);
+  }
 }
 
 // Function to check dictation answer
@@ -108,6 +120,13 @@ function checkDictationAnswer() {
   } else {
     setTimeout(showResults, 2000);
   }
+}
+
+// Function to handle speech synthesis
+function speakSentence(text) {
+  const speech = new SpeechSynthesisUtterance(text);
+  speech.lang = "fr-FR";
+  window.speechSynthesis.speak(speech);
 }
 
 // Function to show final score
