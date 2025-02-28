@@ -1,0 +1,126 @@
+{
+  "title": "Que, Qui, Dont, Où",
+  "description": "Practice when to use 'que', 'qui', 'dont', and 'où' in sentences.",
+  "questions": [
+    {
+      "question": "L'homme ___ parle est mon professeur.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "qui",
+      "explanation": "'Qui' is used because it is the subject of the verb 'parle'."
+    },
+    {
+      "question": "Le film ___ nous avons regardé était intéressant.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "que",
+      "explanation": "'Que' is used because it is the direct object of the verb 'avons regardé'."
+    },
+    {
+      "question": "Voici le livre ___ j'ai besoin pour mon cours.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "dont",
+      "explanation": "'Dont' is used because 'avoir besoin de' requires 'dont'."
+    },
+    {
+      "question": "C'est la maison ___ j'ai grandi.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "où",
+      "explanation": "'Où' is used to indicate a place (where I grew up)."
+    },
+    {
+      "question": "Le garçon ___ court est mon frère.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "qui",
+      "explanation": "'Qui' is used because it is the subject of the verb 'court'."
+    },
+    {
+      "question": "La voiture ___ tu as achetée est magnifique.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "que",
+      "explanation": "'Que' is used because 'acheter' requires a direct object."
+    },
+    {
+      "question": "La ville ___ je suis né est magnifique.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "où",
+      "explanation": "'Où' is used because it refers to a place (where I was born)."
+    },
+    {
+      "question": "Le professeur ___ nous avons parlé est très intelligent.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "dont",
+      "explanation": "'Dont' is used because 'parler de' requires 'dont'."
+    },
+    {
+      "question": "L'homme ___ j'ai rencontré hier est gentil.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "que",
+      "explanation": "'Que' is used because 'rencontrer' takes a direct object."
+    },
+    {
+      "question": "C'est un film ___ tout le monde parle.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "dont",
+      "explanation": "'Dont' is used because 'parler de' takes 'dont'."
+    },
+    {
+      "question": "Le restaurant ___ nous avons dîné était excellent.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "où",
+      "explanation": "'Où' is used because it refers to a place (where we had dinner)."
+    },
+    {
+      "question": "La fille ___ chante est très talentueuse.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "qui",
+      "explanation": "'Qui' is used because 'chante' needs a subject."
+    },
+    {
+      "question": "Les amis ___ tu as invités sont arrivés.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "que",
+      "explanation": "'Que' is used because 'inviter' requires a direct object."
+    },
+    {
+      "question": "La raison ___ je suis en retard est le trafic.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "dont",
+      "explanation": "'Dont' is used because 'raison de' takes 'dont'."
+    },
+    {
+      "question": "La ville ___ nous allons visiter est Paris.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "que",
+      "explanation": "'Que' is used because 'visiter' requires a direct object."
+    },
+    {
+      "question": "C'est une région ___ il fait toujours beau.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "où",
+      "explanation": "'Où' is used because it refers to a place."
+    },
+    {
+      "question": "Le professeur ___ nous enseigne est très compétent.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "qui",
+      "explanation": "'Qui' is used because it is the subject of 'enseigne'."
+    },
+    {
+      "question": "L'entreprise ___ je travaille est internationale.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "où",
+      "explanation": "'Où' is used because it refers to a place (where I work)."
+    },
+    {
+      "question": "Le sujet ___ nous discutons est intéressant.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "dont",
+      "explanation": "'Dont' is used because 'discuter de' takes 'dont'."
+    },
+    {
+      "question": "L'école ___ j'ai étudié est réputée.",
+      "options": ["que", "qui", "dont", "où"],
+      "answer": "où",
+      "explanation": "'Où' is used because it refers to a place."
+    }
+  ]
+}
