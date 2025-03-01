@@ -1,0 +1,16 @@
+{
+  "title": "Family Vocabulary",
+  "description": "Learn family member names in French.",
+  "words": [
+    { "french": "Mère", "english": "Mother" },
+    { "french": "Père", "english": "Father" },
+    { "french": "Frère", "english": "Brother" },
+    { "french": "Sœur", "english": "Sister" },
+    { "french": "Grand-mère", "english": "Grandmother" },
+    { "french": "Grand-père", "english": "Grandfather" },
+    { "french": "Tante", "english": "Aunt" },
+    { "french": "Oncle", "english": "Uncle" },
+    { "french": "Cousin", "english": "Cousin (male)" },
+    { "french": "Cousine", "english": "Cousin (female)" }
+  ]
+}
