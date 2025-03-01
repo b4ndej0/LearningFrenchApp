@@ -6,14 +6,14 @@ body {
 }
 
 h1, h2 {
-  color: #333;
+  color: #fff;
 }
 
 #button-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Adds spacing between buttons */
+  gap: 10px;
 }
 
 button {
@@ -24,7 +24,7 @@ button {
   color: white;
   border: none;
   border-radius: 5px;
-  width: 200px; /* Makes buttons the same width */
+  width: 200px;
   text-align: center;
 }
 
@@ -52,4 +52,19 @@ input {
   font-size: 16px;
   width: 80%;
   margin: 10px 0;
+}
+
+/* Styling for the audio button */
+.audio-button {
+  background: none;
+  border: none;
+  font-size: 22px; /* Adjust icon size */
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.audio-button:hover {
+  color: #007BFF;
 }
