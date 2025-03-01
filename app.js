@@ -35,7 +35,7 @@ function startVocabulary(topic) {
 // Function to display the vocabulary list with audio buttons
 function displayVocabularyList(topic) {
   const wordListDiv = document.getElementById("word-list");
-  wordListDiv.innerHTML = "";
+  wordListDiv.innerHTML = ""; // Clear previous content
 
   vocabularyWords.forEach(word => {
     const wordEntry = document.createElement("div");
@@ -47,8 +47,20 @@ function displayVocabularyList(topic) {
     wordListDiv.appendChild(wordEntry);
   });
 
-  // Add Practice button
-  wordListDiv.innerHTML += `<button onclick="startVocabularyQuiz('${topic}')">Practice</button>`;
+  // Remove existing Practice button if any
+  let existingPracticeButton = document.getElementById("practice-button");
+  if (existingPracticeButton) {
+    existingPracticeButton.remove();
+  }
+
+  // Add the Practice button only once
+  const practiceButton = document.createElement("button");
+  practiceButton.id = "practice-button";
+  practiceButton.textContent = "Practice";
+  practiceButton.onclick = function() {
+    startVocabularyQuiz(topic);
+  };
+  wordListDiv.appendChild(practiceButton);
 }
 
 // Function to play pronunciation of a word
