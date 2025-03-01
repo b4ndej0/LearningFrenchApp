@@ -4,6 +4,21 @@ let currentQuestionIndex = 0;
 let score = 0;
 let vocabularyWords = [];
 
+// Function to start a grammar practice session
+function startPractice(topic) {
+  fetch(`data/${topic}.json`)
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('practice').style.display = 'block';
+      document.getElementById('main-menu').style.display = 'none';
+      questions = data.questions;
+      currentQuestionIndex = 0;
+      score = 0;
+      displayQuestion();
+    })
+    .catch(error => console.error("Error loading questions:", error));
+}
+
 // Function to start Vocabulary (Any Category)
 function startVocabulary(topic) {
   fetch(`data/${topic}.json`)
@@ -43,7 +58,7 @@ function playAudio(word) {
   window.speechSynthesis.speak(speech);
 }
 
-// Function to start the vocabulary quiz (random 5 words)
+// Function to start the vocabulary quiz
 function startVocabularyQuiz(topic) {
   document.getElementById("vocabulary").style.display = "none";
   document.getElementById("practice").style.display = "block";
