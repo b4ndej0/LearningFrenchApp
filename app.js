@@ -25,7 +25,9 @@ function displayVocabularyList() {
   vocabularyWords.forEach(word => {
     const wordEntry = document.createElement("div");
     wordEntry.innerHTML = `
-      <p>${word.french} - ${word.english} <button onclick="playAudio('${word.french}')">🔊 Listen</button></p>
+      <p>${word.french} - ${word.english} 
+        <button class="audio-button" onclick="playAudio('${word.french}')">🔊</button>
+      </p>
     `;
     wordListDiv.appendChild(wordEntry);
   });
