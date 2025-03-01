@@ -36,6 +36,15 @@
     <p id="feedback"></p>
   </div>
 
+  <div id="dictation" style="display: none;">
+    <h2>Dictation Practice</h2>
+    <p>Listen and type the sentence:</p>
+    <button onclick="playDictation()">🔊 Play</button>
+    <input type="text" id="dictationAnswer" placeholder="Type here...">
+    <button onclick="checkDictationAnswer()">Submit</button>
+    <p id="dictationFeedback"></p>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>
