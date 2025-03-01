@@ -54,14 +54,25 @@ input {
   margin: 10px 0;
 }
 
+/* Styling for the vocabulary list */
+.vocab-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  padding: 8px 0;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
 /* Styling for the audio button */
 .audio-button {
   background: none;
   border: none;
-  font-size: 22px; /* Adjust icon size */
+  font-size: 16px;
   cursor: pointer;
-  padding: 5px;
-  margin-left: 5px;
+  padding: 3px;
+  margin-left: 10px;
   vertical-align: middle;
 }
 
