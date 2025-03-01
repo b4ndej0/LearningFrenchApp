@@ -1,0 +1,16 @@
+{
+  "title": "House Vocabulary",
+  "description": "Learn parts of a house in French.",
+  "words": [
+    { "french": "Salon", "english": "Living room" },
+    { "french": "Chambre", "english": "Bedroom" },
+    { "french": "Salle de bain", "english": "Bathroom" },
+    { "french": "Cuisine", "english": "Kitchen" },
+    { "french": "Fenêtre", "english": "Window" },
+    { "french": "Porte", "english": "Door" },
+    { "french": "Toit", "english": "Roof" },
+    { "french": "Mur", "english": "Wall" },
+    { "french": "Plafond", "english": "Ceiling" },
+    { "french": "Jardin", "english": "Garden" }
+  ]
+}
