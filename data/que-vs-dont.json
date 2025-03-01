@@ -1,18 +1,12 @@
 {
   "title": "Que vs Dont",
-  "description": "Learn when to use 'que' (direct object) vs 'dont' (prepositional object).",
+  "description": "Practice distinguishing between 'que' and 'dont' in French.",
   "questions": [
-    {
-      "question": "Le livre ___ j'ai besoin est sur la table.",
-      "options": ["que", "dont"],
-      "answer": "dont",
-      "explanation": "'Dont' is used because it replaces an object of the preposition 'de' in 'avoir besoin de'."
-    },
-    {
-      "question": "Le film ___ nous avons vu était génial.",
-      "options": ["que", "dont"],
-      "answer": "que",
-      "explanation": "'Que' is used because it is the direct object of the verb 'avons vu'."
-    }
+    { "question": "Le livre ___ j'ai besoin est sur la table.", "options": ["que", "dont"], "answer": "dont", "explanation": "'Dont' is used because it replaces an object of 'avoir besoin de'." },
+    { "question": "Le film ___ nous avons regardé était ennuyeux.", "options": ["que", "dont"], "answer": "que", "explanation": "'Que' is used because it is the direct object of 'avons regardé'." },
+    { "question": "La fille ___ je parle est gentille.", "options": ["que", "dont"], "answer": "dont", "explanation": "'Dont' is used because it replaces an object of 'parler de'." },
+    { "question": "Le professeur ___ j'écoute attentivement est très bon.", "options": ["que", "dont"], "answer": "que", "explanation": "'Que' is used because it is the direct object of 'écoute'." },
+    { "question": "La chanson ___ je me souviens est très belle.", "options": ["que", "dont"], "answer": "dont", "explanation": "'Dont' is used because it replaces an object of 'se souvenir de'." },
+    { "question": "Les conseils ___ tu as donnés étaient utiles.", "options": ["que", "dont"], "answer": "que", "explanation": "'Que' is used because it is the direct object of 'as donnés'." }
   ]
 }
