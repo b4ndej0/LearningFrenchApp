@@ -14,7 +14,11 @@
       <button onclick="startPractice('que-vs-qui')">Qui vs Que</button>
       <button onclick="startPractice('que-qui-dont-ou')">Que, Qui, Dont, Où</button>
       <button onclick="startDictationPractice()">Dictation Practice</button>
-      <button onclick="startVocabulary()">Vocabulary (Vegetables)</button>
+      <button onclick="startVocabulary('vocabulary-vegetables')">Vegetables</button>
+      <button onclick="startVocabulary('vocabulary-clothes')">Clothes</button>
+      <button onclick="startVocabulary('vocabulary-fruits')">Fruits</button>
+      <button onclick="startVocabulary('vocabulary-family')">Family</button>
+      <button onclick="startVocabulary('vocabulary-house')">House</button>
       <button onclick="startConjugationPractice()">Future Conjugation</button>
     </div>
   </div>
@@ -27,6 +31,7 @@
 
   <div id="practice" style="display: none;">
     <h2>Practice</h2>
+    <p id="infinitive"></p>
     <p id="question"></p>
     <div id="options"></div>
     <p id="feedback"></p>
