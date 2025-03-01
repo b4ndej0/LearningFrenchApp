@@ -12,25 +12,28 @@ function startVocabulary(topic) {
       document.getElementById("vocabulary").style.display = "block";
       document.getElementById("main-menu").style.display = "none";
       vocabularyWords = data.words;
-      displayVocabularyList();
+      displayVocabularyList(topic);
     })
     .catch(error => console.error("Error loading vocabulary:", error));
 }
 
 // Function to display the vocabulary list with audio buttons
-function displayVocabularyList() {
+function displayVocabularyList(topic) {
   const wordListDiv = document.getElementById("word-list");
   wordListDiv.innerHTML = "";
-  
+
   vocabularyWords.forEach(word => {
     const wordEntry = document.createElement("div");
+    wordEntry.classList.add("vocab-item");
     wordEntry.innerHTML = `
-      <p>${word.french} - ${word.english} 
-        <button class="audio-button" onclick="playAudio('${word.french}')">🔊</button>
-      </p>
+      <span>${word.french} - ${word.english}</span>
+      <button class="audio-button" onclick="playAudio('${word.french}')">🔊</button>
     `;
     wordListDiv.appendChild(wordEntry);
   });
+
+  // Add Practice button
+  wordListDiv.innerHTML += `<button onclick="startVocabularyQuiz('${topic}')">Practice</button>`;
 }
 
 // Function to play pronunciation of a word
@@ -40,53 +43,65 @@ function playAudio(word) {
   window.speechSynthesis.speak(speech);
 }
 
-// Function to start Future Conjugation Practice
-function startConjugationPractice() {
-  fetch("data/conjugation-future.json")
+// Function to start the vocabulary quiz (random 5 words)
+function startVocabularyQuiz(topic) {
+  document.getElementById("vocabulary").style.display = "none";
+  document.getElementById("practice").style.display = "block";
+
+  fetch(`data/${topic}.json`)
     .then(response => response.json())
     .then(data => {
-      document.getElementById("practice").style.display = "block";
-      document.getElementById("main-menu").style.display = "none";
-
-      // Select 5 random exercises per session
-      questions = data.questions.sort(() => 0.5 - Math.random()).slice(0, 5);
+      const selectedWords = data.words.sort(() => 0.5 - Math.random()).slice(0, 5);
+      questions = selectedWords.map(word => ({
+        question: `What is the English meaning of "${word.french}"?`,
+        answer: word.english,
+        options: shuffleArray([
+          word.english,
+          getRandomIncorrectAnswer(word.english),
+          getRandomIncorrectAnswer(word.english)
+        ])
+      }));
       currentQuestionIndex = 0;
       score = 0;
-      displayConjugationQuestion();
+      displayQuestion();
     })
-    .catch(error => console.error("Error loading conjugation questions:", error));
+    .catch(error => console.error("Error loading vocabulary quiz:", error));
 }
 
-// Function to display conjugation question
-function displayConjugationQuestion() {
+// Function to display a quiz question
+function displayQuestion() {
   const question = questions[currentQuestionIndex];
-  document.getElementById("infinitive").textContent = `Infinitive: ${question.infinitive}`;
-  document.getElementById("question").textContent = question.sentence.replace("___", "...");
+  document.getElementById("question").textContent = question.question;
+  
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+  question.options.forEach(option => {
+    const button = document.createElement("button");
+    button.textContent = option;
+    button.onclick = () => checkAnswer(option);
+    optionsDiv.appendChild(button);
+  });
 
-  document.getElementById("options").innerHTML = `
-    <input type="text" id="userAnswer" placeholder="Type your answer">
-    <button onclick="checkConjugationAnswer()">Submit</button>
-  `;
+  document.getElementById("feedback").textContent = "";
 }
 
-// Function to check conjugation answer
-function checkConjugationAnswer() {
-  const userAnswer = document.getElementById("userAnswer").value.trim().toLowerCase();
+// Function to check the quiz answer
+function checkAnswer(selected) {
   const question = questions[currentQuestionIndex];
   const feedback = document.getElementById("feedback");
 
-  if (userAnswer === question.answer.toLowerCase()) {
+  if (selected === question.answer) {
     score++;
     feedback.textContent = "Correct!";
     feedback.style.color = "green";
   } else {
-    feedback.textContent = `Incorrect. The correct answer was: "${question.answer}".`;
+    feedback.textContent = `Incorrect. The correct answer is "${question.answer}".`;
     feedback.style.color = "red";
   }
 
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
-    setTimeout(displayConjugationQuestion, 2000);
+    setTimeout(displayQuestion, 2000);
   } else {
     setTimeout(showResults, 2000);
   }
@@ -99,4 +114,19 @@ function showResults() {
     <p>Your score: ${score}/${questions.length}</p>
     <button onclick="location.reload()">Back to Menu</button>
   `;
+}
+
+// Function to shuffle array elements
+function shuffleArray(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+// Function to get a random incorrect answer
+function getRandomIncorrectAnswer(correctAnswer) {
+  const allEnglishWords = vocabularyWords.map(word => word.english);
+  let incorrect;
+  do {
+    incorrect = allEnglishWords[Math.floor(Math.random() * allEnglishWords.length)];
+  } while (incorrect === correctAnswer);
+  return incorrect;
 }
