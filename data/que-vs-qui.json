@@ -1,18 +1,14 @@
 {
   "title": "Qui vs Que",
-  "description": "Learn when to use 'qui' (subject) vs 'que' (object).",
+  "description": "Practice distinguishing between 'qui' and 'que' in French.",
   "questions": [
-    {
-      "question": "L'homme ___ est venu hier est mon ami.",
-      "options": ["qui", "que"],
-      "answer": "qui",
-      "explanation": "'Qui' is used because it is the subject of the verb 'est venu'."
-    },
-    {
-      "question": "Le livre ___ tu as lu est intéressant.",
-      "options": ["qui", "que"],
-      "answer": "que",
-      "explanation": "'Que' is used because it is the direct object of the verb 'as lu'."
-    }
+    { "question": "L'homme ___ parle est mon ami.", "options": ["qui", "que"], "answer": "qui", "explanation": "'Qui' is used because it is the subject of 'parle'." },
+    { "question": "Le film ___ tu as regardé était génial.", "options": ["qui", "que"], "answer": "que", "explanation": "'Que' is used because it is the direct object of 'as regardé'." },
+    { "question": "La femme ___ travaille ici est gentille.", "options": ["qui", "que"], "answer": "qui", "explanation": "'Qui' is used because it is the subject of 'travaille'." },
+    { "question": "Les enfants ___ nous avons vus étaient heureux.", "options": ["qui", "que"], "answer": "que", "explanation": "'Que' is used because it is the direct object of 'avons vus'." },
+    { "question": "Le professeur ___ explique la leçon est très patient.", "options": ["qui", "que"], "answer": "qui", "explanation": "'Qui' is used because it is the subject of 'explique'." },
+    { "question": "La voiture ___ j'ai achetée est rouge.", "options": ["qui", "que"], "answer": "que", "explanation": "'Que' is used because it is the direct object of 'ai achetée'." },
+    { "question": "Le livre ___ est sur la table est à moi.", "options": ["qui", "que"], "answer": "qui", "explanation": "'Qui' is used because it is the subject of 'est'." },
+    { "question": "Les amis ___ je rencontre souvent sont gentils.", "options": ["qui", "que"], "answer": "que", "explanation": "'Que' is used because it is the direct object of 'rencontre'." }
   ]
 }
