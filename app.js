@@ -4,9 +4,9 @@ let currentQuestionIndex = 0;
 let score = 0;
 let vocabularyWords = [];
 
-// Function to start Vocabulary (Vegetables)
-function startVocabulary() {
-  fetch("data/vocabulary-vegetables.json")
+// Function to start Vocabulary (Any Category)
+function startVocabulary(topic) {
+  fetch(`data/${topic}.json`)
     .then(response => response.json())
     .then(data => {
       document.getElementById("vocabulary").style.display = "block";
@@ -31,7 +31,7 @@ function displayVocabularyList() {
   });
 }
 
-// Function to play the pronunciation of a word
+// Function to play pronunciation of a word
 function playAudio(word) {
   const speech = new SpeechSynthesisUtterance(word);
   speech.lang = "fr-FR";
@@ -45,7 +45,9 @@ function startConjugationPractice() {
     .then(data => {
       document.getElementById("practice").style.display = "block";
       document.getElementById("main-menu").style.display = "none";
-      questions = data.questions;
+
+      // Select 5 random exercises per session
+      questions = data.questions.sort(() => 0.5 - Math.random()).slice(0, 5);
       currentQuestionIndex = 0;
       score = 0;
       displayConjugationQuestion();
@@ -56,7 +58,8 @@ function startConjugationPractice() {
 // Function to display conjugation question
 function displayConjugationQuestion() {
   const question = questions[currentQuestionIndex];
-  document.getElementById("question").textContent = `${question.sentence.replace("___", "...")}`;
+  document.getElementById("infinitive").textContent = `Infinitive: ${question.infinitive}`;
+  document.getElementById("question").textContent = question.sentence.replace("___", "...");
 
   document.getElementById("options").innerHTML = `
     <input type="text" id="userAnswer" placeholder="Type your answer">
