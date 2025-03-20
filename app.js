@@ -134,6 +134,55 @@ function startVocabularyQuiz(topic) {
     .catch(error => console.error("Erreur de chargement du quiz de vocabulaire :", error));
 }
 
+// Fonction pour démarrer la conjugaison du futur
+function startConjugationPractice() {
+  fetch("data/conjugation-future.json")
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("practice").style.display = "block";
+      document.getElementById("main-menu").style.display = "none";
+
+      // Sélectionner 5 questions aléatoires
+      questions = data.questions.sort(() => 0.5 - Math.random()).slice(0, 5);
+      currentQuestionIndex = 0;
+      score = 0;
+      displayConjugationQuestion();
+    })
+    .catch(error => console.error("Erreur de chargement des questions :", error));
+}
+
+// Afficher une question de conjugaison (avec saisie)
+function displayConjugationQuestion() {
+  const question = questions[currentQuestionIndex];
+  document.getElementById("question").textContent = question.question;
+
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = `
+    <input type="text" id="userAnswer" placeholder="Écris la conjugaison">
+    <button onclick="checkConjugationAnswer()">Valider</button>
+  `;
+
+  document.getElementById("feedback").textContent = "";
+}
+
+// Vérifier une réponse en conjugaison
+function checkConjugationAnswer() {
+  const userAnswer = document.getElementById("userAnswer").value.trim().toLowerCase();
+  const question = questions[currentQuestionIndex];
+  const feedback = document.getElementById("feedback");
+
+  if (userAnswer === question.answer.toLowerCase()) {
+    score++;
+    feedback.textContent = "Correct !";
+    feedback.style.color = "green";
+  } else {
+    feedback.textContent = `Incorrect. La bonne réponse était : "${question.answer}".`;
+    feedback.style.color = "red";
+  }
+
+  nextQuestion();
+}
+
 // Fonction pour mélanger un tableau
 function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
@@ -154,36 +203,4 @@ function playAudio(word) {
   const speech = new SpeechSynthesisUtterance(word);
   speech.lang = "fr-FR";
   window.speechSynthesis.speak(speech);
-}
-
-// Fonction pour démarrer la dictée
-function startDictationPractice() {
-  document.getElementById("main-menu").style.display = "none";
-  document.getElementById("dictation").style.display = "block";
-
-  // Sélectionner une phrase de dictée aléatoire
-  currentQuestionIndex = Math.floor(Math.random() * dictationSentences.length);
-}
-
-// Fonction pour lire la phrase de dictée
-function playDictation() {
-  let sentence = dictationSentences[currentQuestionIndex].sentence;
-  let speech = new SpeechSynthesisUtterance(sentence);
-  speech.lang = "fr-FR";
-  window.speechSynthesis.speak(speech);
-}
-
-// Fonction pour vérifier la réponse de la dictée
-function checkDictationAnswer() {
-  let userAnswer = document.getElementById("dictationAnswer").value.trim();
-  let correctAnswer = dictationSentences[currentQuestionIndex].answer;
-  let feedback = document.getElementById("dictationFeedback");
-
-  if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-    feedback.textContent = "Correct !";
-    feedback.style.color = "green";
-  } else {
-    feedback.textContent = `Incorrect. La bonne phrase était : "${correctAnswer}".`;
-    feedback.style.color = "red";
-  }
 }
