@@ -2,6 +2,8 @@
 function returnToMenu() {
   document.getElementById("practice").style.display = "none";
   document.getElementById("main-menu").style.display = "block";
+  document.getElementById("vocabulary").style.display = "none";
+  document.getElementById("dictation").style.display = "none";
 }
 
 // Variables globales
@@ -69,4 +71,9 @@ function nextPasseComposeQuestion() {
   } else {
     setTimeout(showResults, QUESTION_DELAY);
   }
+}
+
+// Fonction pour afficher les résultats (à implémenter)
+function showResults() {
+  // Implémentez la logique pour afficher les résultats ici
 }
