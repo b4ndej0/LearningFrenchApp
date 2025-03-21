@@ -1,5 +1,11 @@
-function startConjugationPractice() {
-  fetch("data/conjugation-future.json")
+let currentTopic;
+let questions;
+let currentQuestionIndex = 0;
+let score = 0;
+
+// Fonction pour démarrer la pratique du Passé Composé
+function startPasseComposePractice() {
+  fetch("data/passe-compose.json")
     .then(response => response.json())
     .then(data => {
       document.getElementById("practice").style.display = "block";
@@ -9,31 +15,31 @@ function startConjugationPractice() {
       questions = data.questions.sort(() => 0.5 - Math.random()).slice(0, 5);
       currentQuestionIndex = 0;
       score = 0;
-      displayConjugationQuestion();
+      displayPasseComposeQuestion();
     })
     .catch(error => console.error("Erreur de chargement des questions :", error));
 }
 
-function displayConjugationQuestion() {
+// Afficher la question avec le verbe en infinitif et le sujet
+function displayPasseComposeQuestion() {
   const question = questions[currentQuestionIndex];
 
-  // Vérifier si l'infinitif et le sujet existent pour éviter les erreurs
-  const verbInfinitive = question.infinitive ? `<strong>Verbe : ${question.infinitive}</strong><br>` : "";
+  const verbInfinitive = question.infinitive ? `<strong>Verbe : ${question.infinitive}</strong>` : "";
   const subject = question.subject ? `<strong>${question.subject}</strong>` : "";
 
-  // Afficher le verbe en infinitif + la phrase avec le sujet
-  document.getElementById("question").innerHTML = `${verbInfinitive}${subject} ${question.question}`;
+  document.getElementById("question").innerHTML = `${verbInfinitive}<br>${subject} ${question.question}`;
 
   const optionsDiv = document.getElementById("options");
   optionsDiv.innerHTML = `
     <input type="text" id="userAnswer" placeholder="Écris la conjugaison">
-    <button onclick="checkConjugationAnswer()">Valider</button>
+    <button onclick="checkPasseComposeAnswer()">Valider</button>
   `;
 
   document.getElementById("feedback").textContent = "";
 }
 
-function checkConjugationAnswer() {
+// Vérifier la réponse de l'utilisateur
+function checkPasseComposeAnswer() {
   const userAnswer = document.getElementById("userAnswer").value.trim().toLowerCase();
   const question = questions[currentQuestionIndex];
   const feedback = document.getElementById("feedback");
@@ -47,18 +53,20 @@ function checkConjugationAnswer() {
     feedback.style.color = "red";
   }
 
-  nextQuestion();
+  nextPasseComposeQuestion();
 }
 
-function nextQuestion() {
+// Passer à la question suivante
+function nextPasseComposeQuestion() {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
-    setTimeout(displayConjugationQuestion, 2000);
+    setTimeout(displayPasseComposeQuestion, 2000);
   } else {
     setTimeout(showResults, 2000);
   }
 }
 
+// Afficher les résultats
 function showResults() {
   document.getElementById("practice").innerHTML = `
     <h2>Pratique Terminée</h2>
