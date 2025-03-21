@@ -1,3 +1,9 @@
+// Fonction pour retourner au menu principal
+function returnToMenu() {
+  document.getElementById("practice").style.display = "none";
+  document.getElementById("main-menu").style.display = "block";
+}
+
 // Variables globales
 let questions = [];
 let currentQuestionIndex = 0;
