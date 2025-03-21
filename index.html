@@ -23,20 +23,22 @@
       <button onclick="startPasseComposePractice()">Passé Composé</button>
     </div>
   </div>
-
+  
   <div id="vocabulary" style="display: none;">
     <h2>Learn Vocabulary</h2>
     <div id="word-list"></div>
+    <button id="return-to-menu" onclick="returnToMenu()">Retourner au menu</button>
   </div>
-
+  
   <div id="practice" style="display: none;">
     <h2>Practice</h2>
     <p id="infinitive"></p>
     <p id="question"></p>
     <div id="options"></div>
     <p id="feedback"></p>
+    <button id="return-to-menu" onclick="returnToMenu()">Retourner au menu</button>
   </div>
-
+  
   <div id="dictation" style="display: none;">
     <h2>Dictation Practice</h2>
     <p>Listen and type the sentence:</p>
@@ -44,8 +46,9 @@
     <input type="text" id="dictationAnswer" placeholder="Type here...">
     <button onclick="checkDictationAnswer()">Submit</button>
     <p id="dictationFeedback"></p>
+    <button id="return-to-menu" onclick="returnToMenu()">Retourner au menu</button>
   </div>
-
+  
   <script src="app.js"></script>
 </body>
 </html>
