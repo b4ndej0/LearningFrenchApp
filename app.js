@@ -1,8 +1,3 @@
-let currentTopic;
-let questions;
-let currentQuestionIndex = 0;
-let score = 0;
-
 // Fonction pour démarrer la pratique du Passé Composé
 function startPasseComposePractice() {
   fetch("data/passe-compose.json")
@@ -20,7 +15,7 @@ function startPasseComposePractice() {
     .catch(error => console.error("Erreur de chargement des questions :", error));
 }
 
-// Afficher la question avec le verbe en infinitif et le sujet
+// Fonction pour afficher une question du Passé Composé avec le verbe en infinitif et le sujet
 function displayPasseComposeQuestion() {
   const question = questions[currentQuestionIndex];
 
@@ -38,7 +33,7 @@ function displayPasseComposeQuestion() {
   document.getElementById("feedback").textContent = "";
 }
 
-// Vérifier la réponse de l'utilisateur
+// Vérifier la réponse de l'utilisateur pour le Passé Composé
 function checkPasseComposeAnswer() {
   const userAnswer = document.getElementById("userAnswer").value.trim().toLowerCase();
   const question = questions[currentQuestionIndex];
@@ -64,13 +59,4 @@ function nextPasseComposeQuestion() {
   } else {
     setTimeout(showResults, 2000);
   }
-}
-
-// Afficher les résultats
-function showResults() {
-  document.getElementById("practice").innerHTML = `
-    <h2>Pratique Terminée</h2>
-    <p>Ton score : ${score}/${questions.length}</p>
-    <button onclick="location.reload()">Retour au Menu</button>
-  `;
 }
