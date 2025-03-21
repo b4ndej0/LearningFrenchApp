@@ -20,7 +20,7 @@ function returnToMenu() {
   document.getElementById("dictation").style.display = "none";
 }
 
-// Fonction pour démarrer une session de pratique (grammaire, conjugaison, passé composé)
+// Fonction pour démarrer une session de pratique (grammaire, conjugaison, passé composé, conditionnel)
 function startPractice(topic) {
   fetch(`data/${topic}.json`)
     .then(response => response.json())
@@ -40,7 +40,9 @@ function startPractice(topic) {
 // Fonction pour afficher une question avec un champ de texte si nécessaire
 function displayQuestion() {
   const question = questions[currentQuestionIndex];
-  document.getElementById("question").textContent = question.question;
+  const verbInfinitive = question.infinitive ? `<strong>Verbe : ${question.infinitive}</strong>` : "";
+  const subject = question.subject ? `<strong>${question.subject}</strong>` : "";
+  document.getElementById("question").innerHTML = `${verbInfinitive}<br>${subject} ${question.question}`;
 
   const optionsDiv = document.getElementById("options");
   optionsDiv.innerHTML = ""; // Efface les anciennes réponses
