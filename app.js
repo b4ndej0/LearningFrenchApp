@@ -116,58 +116,45 @@ function showResults() {
   `;
 }
 
-// Fonction pour démarrer la conjugaison du futur
-function startConjugationPractice() {
-  fetch("data/conjugation-future.json")
+// Fonction pour démarrer un quiz de vocabulaire
+function startVocabularyQuiz(topic) {
+  fetch(`data/${topic}.json`)
     .then(response => response.json())
     .then(data => {
+      document.getElementById("vocabulary").style.display = "none";
       document.getElementById("practice").style.display = "block";
-      document.getElementById("main-menu").style.display = "none";
-
-      // Sélectionner 5 questions aléatoires
-      questions = shuffleArray(data.questions).slice(0, 5);
+      
+      vocabularyWords = data.words;
+      const selectedWords = vocabularyWords.sort(() => 0.5 - Math.random()).slice(0, 5);
+      questions = selectedWords.map(word => ({
+        question: `Que signifie "${word.french}" en anglais ?`,
+        answer: word.english,
+        options: shuffleArray([
+          word.english,
+          getRandomIncorrectAnswer(word.english),
+          getRandomIncorrectAnswer(word.english)
+        ])
+      }));
       currentQuestionIndex = 0;
       score = 0;
-      displayConjugationQuestion();
+      displayQuestion();
     })
-    .catch(error => console.error("Erreur de chargement des questions :", error));
-}
-
-// Afficher une question de conjugaison avec le verbe en infinitif
-function displayConjugationQuestion() {
-  const question = questions[currentQuestionIndex];
-  document.getElementById("question").innerHTML = `<strong>Verbe : ${question.infinitive}</strong><br>${question.question}`;
-
-  const optionsDiv = document.getElementById("options");
-  optionsDiv.innerHTML = `
-    <input type="text" id="userAnswer" placeholder="Écris la conjugaison">
-    <button onclick="checkConjugationAnswer()">Valider</button>
-  `;
-
-  document.getElementById("feedback").textContent = "";
-}
-
-// Vérifier une réponse en conjugaison
-function checkConjugationAnswer() {
-  const userAnswer = document.getElementById("userAnswer").value.trim().toLowerCase();
-  const question = questions[currentQuestionIndex];
-  const feedback = document.getElementById("feedback");
-
-  if (userAnswer === question.answer.toLowerCase()) {
-    score++;
-    feedback.textContent = "Correct !";
-    feedback.style.color = "green";
-  } else {
-    feedback.textContent = `Incorrect. La bonne réponse était : "${question.answer}".`;
-    feedback.style.color = "red";
-  }
-
-  nextQuestion();
+    .catch(error => console.error("Erreur de chargement du quiz de vocabulaire :", error));
 }
 
 // Fonction pour mélanger un tableau
 function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
+}
+
+// Fonction pour récupérer une réponse incorrecte
+function getRandomIncorrectAnswer(correctAnswer) {
+  const allEnglishWords = vocabularyWords.map(word => word.english);
+  let incorrect;
+  do {
+    incorrect = allEnglishWords[Math.floor(Math.random() * allEnglishWords.length)];
+  } while (incorrect === correctAnswer);
+  return incorrect;
 }
 
 // Fonction pour lire un mot en français
@@ -233,31 +220,6 @@ function showDictationResults() {
 function playDictation() {
   const sentence = dictationSentences[currentQuestionIndex].sentence;
   playAudio(sentence);
-}
-
-// Fonction pour démarrer la pratique du vocabulaire
-function startVocabulary(topic) {
-  fetch(`data/${topic}.json`)
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("vocabulary").style.display = "block";
-      document.getElementById("main-menu").style.display = "none";
-      vocabularyWords = data.words;
-      displayVocabularyWords();
-    })
-    .catch(error => console.error("Erreur de chargement des mots :", error));
-}
-
-// Afficher les mots de vocabulaire
-function displayVocabularyWords() {
-  const wordList = document.getElementById("word-list");
-  wordList.innerHTML = "";
-  vocabularyWords.forEach(word => {
-    const wordItem = document.createElement("div");
-    wordItem.textContent = word;
-    wordItem.onclick = () => playAudio(word);
-    wordList.appendChild(wordItem);
-  });
 }
 
 // Fonction pour démarrer la pratique du Passé Composé
